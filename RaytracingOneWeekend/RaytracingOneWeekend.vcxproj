@@ -147,8 +147,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ray.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="vec3.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="RaytracingOneWeekend.cpp" />
