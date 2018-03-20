@@ -7,7 +7,7 @@
 
 #include "ray.hpp"
 
-bool hit_sphere(const vec3& center, float radius, const ray& r) {
+bool hit_sphereb(const vec3& center, float radius, const ray& r) {
 	vec3 oc = r.origin() - center;
 	float a = dot(r.direction(), r.direction());
 	float b = 2.0 * dot(oc, r.direction());
@@ -16,9 +16,26 @@ bool hit_sphere(const vec3& center, float radius, const ray& r) {
 	return discriminat > 0;
 }
 
+float hit_spheref(const vec3& center, float radius, const ray& r) {
+	vec3 oc = r.origin() - center;
+	float a = dot(r.direction(), r.direction());
+	float b = 2.0 * dot(oc, r.direction());
+	float c = dot(oc, oc) - radius * radius;
+	float discriminat = b * b - 4 * a * c;
+
+	if (discriminat < 0) {
+		return -1.0;
+	}
+	else {
+		return (-b - sqrt(discriminat)) / (2.0 * a);
+	}
+}
+
 vec3 color(const ray& r) {
-	if (hit_sphere(vec3(0.0, 0.0, 1.0), 0.5, r)) {
-		return vec3(1.0, 1.0f, 1.0f);
+	float f = hit_spheref(vec3(0.0, 0.0, -1.0), 0.5, r);
+	if (f > 0) {
+		vec3 n = unit_vector(r.point_at_parameter(f) - vec3(0.0, 0.0, -1.0));
+		return 0.5 * vec3(n.x() + 1.0, n.y() + 1.0, n.z() + 1.0);
 	}
 	vec3 unit_direction = unit_vector(r.direction());
 	float t = 0.5 * (unit_direction.y() + 1.0);
