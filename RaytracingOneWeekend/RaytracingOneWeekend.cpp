@@ -142,8 +142,9 @@ int main()
 
 	vec3 lookfrom(13, 2, 3);
 	vec3 lookat(0, 0, 0);
-	camera cam(lookfrom, lookat, vec3(0, 1, 0), 20, float(nx) / float(ny), 2.0, (lookfrom - lookat).length());
+	camera cam(lookfrom, lookat, vec3(0, 1, 0), 20, float(nx) / float(ny), 0.1, 10);
 
+#pragma loop(hint_parallel(8))  
 	for (int j = ny - 1; j >= 0; j--) {
 		for (int i = 0; i < nx; i++) {
 
