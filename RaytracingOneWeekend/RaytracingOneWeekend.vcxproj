@@ -150,6 +150,7 @@
     <ClInclude Include="camera.hpp" />
     <ClInclude Include="hitable.hpp" />
     <ClInclude Include="hitablelist.hpp" />
+    <ClInclude Include="material.hpp" />
     <ClInclude Include="ray.hpp" />
     <ClInclude Include="sphere.hpp" />
     <ClInclude Include="stdafx.h" />

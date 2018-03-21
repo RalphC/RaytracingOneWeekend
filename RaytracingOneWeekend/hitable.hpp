@@ -1,12 +1,18 @@
+//#pragma once
+
 #ifndef HITABLEH
 #define HITABLEH
 
 #include "ray.hpp"
+//#include "material.hpp"
+
+class material;
 
 struct hit_record {
 	float t;
 	vec3 p;
 	vec3 normal;
+	material *p_mat;
 };
 
 class hitable {
